@@ -2340,3 +2340,27 @@ section {
 #footer .credits a {
     color: #a2cce3;
 }
+
+.doc-code {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: rgb(240, 240, 240);
+    color: rgb(68, 68, 68);
+}
+
+.doc-title-1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+.doc-title-2 {
+    font-size: 18px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.file_tree {
+    background-color: #f0f0f0;
+    margin: 0em 5em;
+    padding: 20px;
+}
