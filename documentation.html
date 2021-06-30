@@ -157,7 +157,7 @@
                     <p><span class="fst-italic">frame annotations</span> contains the annotation in one scene, including <span class="fst-italic">object name</span>, <span class="fst-italic">3D box</span>, <span class="fst-italic">2D box</span> and <span class="fst-italic">num points in gt</span>.
                     <pre class="doc-code"><code>"annos": [{
     "name":                 < list >  -- list of object names ['Car'|'Truck'|'Bus'|'Pedestrian'|'Cyclist'].
-    "boxes_3d":             < list of lisst > -- N x 7 bounding box for each object, (cx, cy, cz, l, w, h, θ).
+    "boxes_3d":             < list of list > -- N x 7 bounding box for each object, (cx, cy, cz, l, w, h, θ).
     "boxes_2d":             < dict >  -- conatins 2D project bounding box (xmin, ymin, xmax, ymax) for each object in each camera, (-1., -1., -1., -1) otherwise.
     "num_points_in_gt":     < list >  -- list of number indicating point cloud numbers in each object 3D bounding box
 }]</code></pre>
