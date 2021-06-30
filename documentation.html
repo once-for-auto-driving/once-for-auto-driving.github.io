@@ -84,12 +84,20 @@
                             </ul>                             
                         </li>                         
                         <li class="dropdown">
-                            <a href="terms_of_use.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+                            <a href="terms_of_use.html"><span>Terms of Use</span><i class="bi bi-chevron-down"></i></a>
                             <ul>                            
                                 <li>
                                     <a href="terms_of_use.html#terms_of_use">Terms of Use</a>
                                 </li>
                             </ul>                             
+                        </li>
+                        <li class="dropdown">
+                            <a href="licenses.html"><span>Licenses</span><i class="bi bi-chevron-down"></i></a>
+                            <ul>                            
+                                <li>
+                                    <a href="licenses.html#licenses">lisenses</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>                     
                     <i class="bi bi-list mobile-nav-toggle"></i> 
@@ -117,7 +125,7 @@
                     <div class="col-md-7 order-2 order-md-1 pt-5"></div>
                     <span class="anchor" id="data_annotation"></span>
                     <h3><b>Data Annotation</b></h3>
-                    <p class="doc-title-1">Annotations</p>
+                    <p class="doc-title-2">Annotation</p>
                     <p>We select 16k most representative scenes from the dataset, and exhaustively annotate all the 3D bounding boxes of 5 categories: car, bus, truck, pedestrian and cyclist. Each bounding box is a 3D cuboid and can be represented as a 7-dim vector: (cx, cy, cz, l, w, h, θ), where (cx, cy, cz) is the center of the cuboid on the LiDAR coordinate, (l, w, h) denotes length, width, height, and θ is the yaw angle of the cuboid. We provide 2D bounding boxes by projecting 3D boxes on image planes.</p>
                     <p>Annotations of ONCE dataset consists three main parts: <span class="fst-italic">meta_info</span>, <span class="fst-italic">calib</span> and <span class="fst-italic">frames</span>.</p>
 
@@ -126,7 +134,7 @@
                     <pre class="doc-code"><code>"meta_info": {
     "weather":              < str >   -- ["sunny"|"cloudy"|"rainy"].
     "period":               < str >   -- ["morning"|"noon"|"afternoon"|"night"].
-    "image_size":           < list >  -- [image_width, image_height].
+    "image_size":           < list >  -- (image_width, image_height)
     "point_feature_num":    < int >   -- features of point cloud.
 }</code></pre>
                     <p class="doc-title-2">calib</p>
@@ -142,10 +150,17 @@
                     <pre class="doc-code"><code>"frames": [{
     "sequence_id":          < str >   -- sequence id of the scene.
     "frame_id":             < str >   -- timestamp of the frame.
-    "pose":                 < list >  -- [quat_w, quat_x, quat_y, quat_z, trans_x, trans_y, trans_z].
-    "annos":                < list >  -- 3D and 2D annotations for each objects appear in this frame, detailed description in Data Annotation section.
+    "pose":                 < list >  -- (quat_w, quat_x, quat_y, quat_z, trans_x, trans_y, trans_z).
+    "annos":                < list >  -- 3D and 2D annotations for each objects appear in this frame, detailed description in frame annotation section.
 }]</code></pre> 
-
+                    <p class="doc-title-2">frame annotations</p>
+                    <p><span class="fst-italic">frame annotations</span> contains the annotation in one scene, including <span class="fst-italic">object name</span>, <span class="fst-italic">3D box</span>, <span class="fst-italic">2D box</span> and <span class="fst-italic">num points in gt</span>.
+                    <pre class="doc-code"><code>"annos": [{
+    "name":                 < list >  -- list of object names ['Car'|'Truck'|'Bus'|'Pedestrian'|'Cyclist'].
+    "boxes_3d":             < list of lisst > -- N x 7 bounding box for each object, (cx, cy, cz, l, w, h, θ).
+    "boxes_2d":             < dict >  -- conatins 2D project bounding box (xmin, ymin, xmax, ymax) for each object in each camera, (-1., -1., -1., -1) otherwise.
+    "num_points_in_gt":     < list >  -- list of number indicating point cloud numbers in each object 3D bounding box
+}]</code></pre>
                     <div class="col-md-7 order-2 order-md-1 pt-5"></div>
                     <span class="anchor" id="data_toolkits"></span>
                     <h3><b>Data Toolkits</b></h3>
