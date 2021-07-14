@@ -2364,3 +2364,12 @@ section {
     margin: 0em 5em;
     padding: 20px;
 }
+.download-link {
+    display: flex; 
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.download-link span{
+    width: 30%;
+}
